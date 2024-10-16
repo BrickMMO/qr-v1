@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QR Codes</title>
-  </head>
-  <body>
-    <h1>QR Codes</h1>
-    <h2>
-      This is the new location for
-      <a href="https://qr.brickmmo.com">https://qr.brickmmo.com</a>
-    </h2>
-    <h2>
-      See
-      <a href="https://github.com/BrickMMO/qr-v1"
-        >https://github.com/BrickMMO/qr-v1</a
-      >
-      for more information
-    </h2>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickMMO QR Redirect</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional CSS -->
+</head>
+<body>
+    <div id="app">
+        <img src="assets/brickmmo-logo-horizontal.jpg" alt="BrickMMO Logo" />
+        <h1>BrickMMO</h1>
+        <div v-if="redirecting">Redirecting...</div>
+        <div v-if="error">{{ errorMessage }}</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="qrRedirect.js"></script>
+</body>
 </html>
