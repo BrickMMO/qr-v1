@@ -41,9 +41,8 @@ new Vue({
             try {
                 //change the API url
                 const response = await fetch('http://local.console.brickmmo.com:7777/api/qr/list');
-                const text = await response.text(); // Get raw text response
-                console.log(text); // Log the raw response for inspection
-                const data = JSON.parse(text); // Parse the JSON
+                const text = await response.text(); 
+                const data = JSON.parse(text);
 
                 if (!data.error) {
                     this.qrCodes = data.qr_codes;
