@@ -10,11 +10,6 @@
   <body>
     <div id="app">
       <img src="assets/brickmmo-logo-horizontal.jpg" alt="BrickMMO Logo" />
-      <div v-if="redirecting" class="redirecting-container">
-        <div class="spinner"></div>
-        <!-- Spinner -->
-        <p>Redirecting...</p>
-      </div>
 
       <div v-if="error">
         <p>Error: {{ errorMessage }}</p>
@@ -24,7 +19,6 @@
         <ul>
           <li v-for="qrCode in qrCodes" :key="qrCode.id">
             <h4>{{ qrCode.name }}</h4>
-            <!-- Display QR code image -->
             <img
               :src="qrCode.image"
               alt="QR Code Image"
