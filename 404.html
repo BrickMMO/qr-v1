@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrickMMO QR Redirect</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Optional CSS -->
+  </head>
+  <body>
+    <div id="app">
+      <img src="assets/brickmmo-logo-horizontal.jpg" alt="BrickMMO Logo" />
+      <div v-if="redirecting" class="redirecting-container">
+        <div class="spinner"></div>
+        <!-- Spinner -->
+        <p>Redirecting...</p>
+      </div>
+
+      <div v-if="error">
+        <p>Error: {{ errorMessage }}</p>
+      </div>
+      <div v-if="qrCodes.length > 0">
+        <h3>Available QR Codes</h3>
+        <ul>
+          <li v-for="qrCode in qrCodes" :key="qrCode.id">
+            <h4>{{ qrCode.name }}</h4>
+            <!-- Display QR code image -->
+            <img
+              :src="qrCode.image"
+              alt="QR Code Image"
+              width="150"
+              height="150"
+            />
+            <p>
+              <a :href="qrCode.url" target="_blank">{{ qrCode.url }}</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="qrRedirect.js"></script>
+  </body>
+</html>
