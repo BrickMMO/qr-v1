@@ -7,8 +7,8 @@ new Vue({
     qrCodes: [],
   },
   created() {
-    let uniqueId = window.location.hash.split("/").pop();
-    console.log(window.location);
+    let uniqueId = window.location.pathname.split("/").pop();
+    console.log(window.location.pathname);
     uniqueId = uniqueId.replace("#", "");
     if (!uniqueId || uniqueId === "") {
       this.fetchQrCodeList();
