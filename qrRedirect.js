@@ -5,6 +5,7 @@ new Vue({
     error: false,
     errorMessage: "",
     qrCodeUrl: "",
+    countDown: 5,
   },
   created() {
     let uniqueId = window.location.href.split("/").pop();
@@ -17,18 +18,25 @@ new Vue({
     }
   },
   methods: {
+    async incCountDown() {
+      setTimeout(() => {
+        if (this.countDown > 0) {
+          this.countDown--;
+          this.incCountDown();
+        } else {
+          window.location.href = this.qrCodeUrl;
+        }
+      }, 1000);
+    },
     async loadRedirect(uniqueId) {
       try {
-        // change the API url
         const response = await fetch(
           `https://console.brickmmo.com/api/qr/scan/${uniqueId}`
         );
         const data = await response.json();
         if (!data.error) {
-          setTimeout(() => {
-            this.qrCodeUrl = data.qr.url;
-            window.location.href = data.qr.url;
-          }, 20000);
+          this.qrCodeUrl = data.qr.url;
+          this.incCountDown();
         } else {
           throw new Error(data.message);
         }
