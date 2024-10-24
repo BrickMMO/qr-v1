@@ -5,7 +5,7 @@ new Vue({
     error: false,
     errorMessage: "",
     qrCodeUrl: "",
-    countDown: 5,
+    countDown: 3,
   },
   created() {
     let uniqueId = window.location.href.split("/").pop();
