@@ -30,7 +30,7 @@ new Vue({
 
           this.incCountDown();
         } else {
-          // window.location.href = this.qrCodeUrl;
+          window.location.href = this.qrCodeUrl;
         }
       }, 1000);
     },
