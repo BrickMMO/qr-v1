@@ -4,7 +4,7 @@ new Vue({
     redirecting: true,
     error: false,
     errorMessage: "",
-    qrCodeUrl: "",
+    qrCode: [],
   },
   created() {
     let uniqueId = window.location.href.split("/").pop();
@@ -25,9 +25,9 @@ new Vue({
         );
         const data = await response.json();
         if (!data.error) {
-          this.qrCodeUrl = data.qr.url;
+          this.qrCode = data.qr;
           setTimeout(() => {
-            window.location.href = data.qr.url;
+            window.location.href = this.qrCode.url;
           }, 20000);
         } else {
           throw new Error(data.message);
