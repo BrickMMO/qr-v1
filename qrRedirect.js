@@ -5,7 +5,6 @@ new Vue({
     error: false,
     errorMessage: "",
     qrCodeUrl: "",
-    countDown: 5,
   },
   created() {
     let uniqueId = window.location.href.split("/").pop();
@@ -28,8 +27,8 @@ new Vue({
         if (!data.error) {
           this.qrCodeUrl = data.qr.url;
           setTimeout(() => {
-            // window.location.href = data.qr.url;
-          }, 1000);
+            window.location.href = data.qr.url;
+          }, 20000);
         } else {
           throw new Error(data.message);
         }
