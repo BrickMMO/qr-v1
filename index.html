@@ -1,3 +1,7 @@
+---
+permalink: /404.html
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,30 +17,20 @@
         alt="BrickMMO Logo"
         width="200"
       />
+      <div v-if="redirecting" class="redirecting-container">
+        <div class="spinner"></div>
+        <p>
+          Redirecting in <span>{{ countDown }}</span>...
+          <br />
+          <a :href="qrCode.url" target="_blank">{{ qrCode.url }}</a>
+        </p>
+      </div>
 
       <div v-if="error">
         <p>Error: {{ errorMessage }}</p>
       </div>
-      <div v-if="qrCodes.length > 0">
-        <h3>Available QR Codes</h3>
-        <ul>
-          <li v-for="qrCode in qrCodes" :key="qrCode.id">
-            <h4>{{ qrCode.name }}</h4>
-            <img
-              :src="qrCode.image"
-              alt="QR Code Image"
-              width="150"
-              height="150"
-            />
-            <p>
-              <a :href="qrCode.url" target="_blank">{{ qrCode.url }}</a>
-            </p>
-          </li>
-        </ul>
-      </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="qrList.js"></script>
+    <script src="qrRedirect.js"></script>
   </body>
 </html>
