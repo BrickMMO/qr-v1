@@ -7,7 +7,7 @@ new Vue({
     qrCodeUrl: "",
   },
   created() {
-    let uniqueId = window.location.pathname.split("/").pop();
+    let uniqueId = window.location.href.split("/").pop();
     uniqueId = uniqueId.replace("#", "");
 
     if (!uniqueId || uniqueId === "") {
@@ -28,7 +28,7 @@ new Vue({
           setTimeout(() => {
             this.qrCodeUrl = data.qr.url;
             window.location.href = data.qr.url;
-          }, 3000);
+          }, 20000);
         } else {
           throw new Error(data.message);
         }
