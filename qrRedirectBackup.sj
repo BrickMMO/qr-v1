@@ -18,18 +18,28 @@ new Vue({
     }
   },
   methods: {
+    async incCountDown() {
+      setTimeout(() => {
+        if (this.countDown > 0) {
+          this.countDown--;
+          console.log(this.countDown);
+          this.incCountDown();
+        } else {
+          window.location.href = this.qrCodeUrl;
+        }
+      }, 1000);
+    },
     async loadRedirect(uniqueId) {
       try {
-        // change the API url
         const response = await fetch(
           `https://console.brickmmo.com/api/qr/scan/${uniqueId}`
         );
         const data = await response.json();
         if (!data.error) {
           this.qrCodeUrl = data.qr.url;
-          setTimeout(() => {
-            // window.location.href = data.qr.url;
-          }, 1000);
+          this.incCountDown();
+          console.log(data.qr.url);
+          console.log(this.qrCodeUrl);
         } else {
           throw new Error(data.message);
         }
