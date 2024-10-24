@@ -22,8 +22,12 @@ new Vue({
       setTimeout(() => {
         if (this.countDown > 0) {
           this.countDown--;
-          console.log(this.countDown);
           this.incCountDown();
+
+          let fixUrl = document.getElementById("fixUrl");
+          fixUrl.innerHtml = this.qrCodeUrl;
+          let fixCountDown = document.getElementById("fixCountDown");
+          fixCountDown.innerHtml = this.countDown;
         } else {
           window.location.href = this.qrCodeUrl;
         }
