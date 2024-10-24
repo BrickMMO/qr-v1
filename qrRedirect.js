@@ -22,6 +22,7 @@ new Vue({
       setTimeout(() => {
         if (this.countDown > 0) {
           this.countDown--;
+          console.log(this.countDown);
           this.incCountDown();
         } else {
           window.location.href = this.qrCodeUrl;
@@ -37,6 +38,8 @@ new Vue({
         if (!data.error) {
           this.qrCodeUrl = data.qr.url;
           this.incCountDown();
+          console.log(data.qr.url);
+          console.log(this.qrCodeUrl);
         } else {
           throw new Error(data.message);
         }
