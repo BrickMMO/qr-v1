@@ -22,14 +22,15 @@ new Vue({
       setTimeout(() => {
         if (this.countDown > 0) {
           this.countDown--;
-          this.incCountDown();
 
           let fixUrl = document.getElementById("fixUrl");
-          fixUrl.innerHtml = this.qrCodeUrl;
+          fixUrl.innerHTML = this.qrCodeUrl;
           let fixCountDown = document.getElementById("fixCountDown");
-          fixCountDown.innerHtml = this.countDown;
+          fixCountDown.innerHTML = this.countDown;
+
+          this.incCountDown();
         } else {
-          window.location.href = this.qrCodeUrl;
+          // window.location.href = this.qrCodeUrl;
         }
       }, 1000);
     },
@@ -41,9 +42,11 @@ new Vue({
         const data = await response.json();
         if (!data.error) {
           this.qrCodeUrl = data.qr.url;
+
+          let fixUrl = document.getElementById("fixUrl");
+          fixUrl.innerHTML = this.qrCodeUrl;
+
           this.incCountDown();
-          console.log(data.qr.url);
-          console.log(this.qrCodeUrl);
         } else {
           throw new Error(data.message);
         }
