@@ -37,7 +37,7 @@ new Vue({
     async loadRedirect(uniqueId) {
       try {
         const response = await fetch(
-          `https://console.brickmmo.com/api/qr/scan/${uniqueId}`
+          `https://api.brickmmo.com/qr/scan/${uniqueId}`
         );
         const data = await response.json();
         if (!data.error) {
