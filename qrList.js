@@ -14,7 +14,7 @@ new Vue({
       try {
         //change the API url
         const response = await fetch(
-          "https://console.brickmmo.com/api/qr/list"
+          "https://api.brickmmo.com/qr/list"
         );
         const text = await response.text();
         const data = JSON.parse(text);
